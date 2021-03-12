@@ -15,3 +15,4 @@ public class Resource extends BaseEntity {
     private String price;
     private Integer idCompany;
     private List<Sales> sales;
+}

@@ -2,7 +2,7 @@ package andrew.projects.influx.Service;
 
 import andrew.projects.influx.Util.Constants;
 import andrew.projects.influx.Domain.User;
-import andrew.projects.influx.Repos.UserRepos;
+import andrew.projects.influx.Repos.UserRepo;
 import lombok.val;
 import retrofit2.Call;
 import retrofit2.Retrofit;
@@ -23,13 +23,13 @@ public class AuthService {
 
     public Call<String> login(String login, String pass) {
 
-        val userApi = retrofit.create(UserRepos.class);
+        val userApi = retrofit.create(UserRepo.class);
 
         return  userApi.logIn(new User(login, pass));
     }
 
     public Call<User> getProfile(String token) {
-        val userApi = retrofit.create(UserRepos.class);
+        val userApi = retrofit.create(UserRepo.class);
 
         return  userApi.getProfile("Bearer "+token);
     }
