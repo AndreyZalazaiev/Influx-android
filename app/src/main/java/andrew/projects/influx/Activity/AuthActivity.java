@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import andrew.projects.influx.R;
 import andrew.projects.influx.Service.AuthService;
+import andrew.projects.influx.Util.Constants;
 import lombok.SneakyThrows;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,7 +26,7 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
-        settings = getSharedPreferences("MyPref", MODE_PRIVATE);
+        settings = getSharedPreferences(Constants.prefName, MODE_PRIVATE);
         if (isLoggedIn()) {
             Log.v("Auth","Automatically logged in");
             toCompanyActivity();
