@@ -1,10 +1,12 @@
 package andrew.projects.influx.Presenter;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.util.List;
 
 import andrew.projects.influx.Domain.Company;
+import andrew.projects.influx.R;
 import andrew.projects.influx.Service.CompanyService;
 import andrew.projects.influx.view.CompanyView;
 import lombok.NoArgsConstructor;

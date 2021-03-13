@@ -56,6 +56,10 @@ public class CompanyFragment extends MvpAppCompatFragment implements CompanyView
         for (Company company : companies) {
             View child = View.inflate(ctx, R.layout.company_card_element, null);
 
+            child.setOnClickListener(c -> {
+                onCompanyClick(company);
+            });
+
             TextView title = child.findViewById(R.id.title);
             TextView desc = child.findViewById(R.id.description);
 
@@ -66,6 +70,14 @@ public class CompanyFragment extends MvpAppCompatFragment implements CompanyView
         }
 
     }
+
+    private void onCompanyClick(Company company) {
+       /* getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.container,new RoomFragment(rooms))
+                .commit();*/
+    }
+
 
     public String getAuthToken() {
         SharedPreferences settings = requireContext().getSharedPreferences(Constants.prefName, MODE_PRIVATE);

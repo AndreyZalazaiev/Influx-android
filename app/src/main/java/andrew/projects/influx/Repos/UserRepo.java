@@ -11,6 +11,10 @@ import retrofit2.http.POST;
 public interface UserRepo {
     @POST("/login")
     Call<String> logIn(@Body User user);
+
+    @POST("/register")
+    Call<User> register(@Body User user);
+
     @GET("/profile")
     Call<User> getProfile(@Header("Authorization") String auth);
 }
