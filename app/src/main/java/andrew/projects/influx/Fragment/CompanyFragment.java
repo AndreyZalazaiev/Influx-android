@@ -6,13 +6,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
-import java.util.Locale;
-import java.util.Objects;
 
 import andrew.projects.influx.Domain.Company;
 import andrew.projects.influx.Presenter.CompanyPresenter;
@@ -46,8 +43,7 @@ public class CompanyFragment extends MvpAppCompatFragment implements CompanyView
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_company, container, false);
         companiesContainer = view.findViewById(R.id.companies);
         ctx = getContext();
@@ -60,11 +56,11 @@ public class CompanyFragment extends MvpAppCompatFragment implements CompanyView
         for (Company company : companies) {
             View child = View.inflate(ctx, R.layout.company_card_element, null);
 
-            TextView title = (TextView) child.findViewById(R.id.title);
-            TextView desc = (TextView) child.findViewById(R.id.description);
-            title.setText(company.getName());
+            TextView title = child.findViewById(R.id.title);
+            TextView desc = child.findViewById(R.id.description);
 
-            desc.setText(String.format("%s%d", getString(R.string.amount_of_resources), company.getResources().size()));
+            title.setText(company.getName());
+            desc.setText(String.format("%s%d ", getString(R.string.amount_of_resources), company.getResources().size()));
 
             companiesContainer.addView(child);
         }

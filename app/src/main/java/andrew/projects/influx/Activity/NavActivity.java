@@ -5,10 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
@@ -18,17 +17,29 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
 
+import andrew.projects.influx.Domain.Authority;
 import andrew.projects.influx.Domain.User;
 import andrew.projects.influx.Fragment.CompanyFragment;
+import andrew.projects.influx.Presenter.NavPresenter;
 import andrew.projects.influx.R;
+import andrew.projects.influx.view.NavView;
 import lombok.val;
+import moxy.MvpAppCompatActivity;
+import moxy.presenter.InjectPresenter;
+import moxy.presenter.ProvidePresenter;
 
-public class NavActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class NavActivity extends MvpAppCompatActivity implements NavView, NavigationView.OnNavigationItemSelectedListener {
 
+    @InjectPresenter
+    NavPresenter navPresenter;
     private AppBarConfiguration mAppBarConfiguration;
-    private LinearLayout companiesContainer;
     private SharedPreferences settings;
 
+    @ProvidePresenter
+    NavPresenter provideDetailsPresenter() {
+        settings = getSharedPreferences("MyPref", MODE_PRIVATE);
+        return new NavPresenter(settings.getString("token", "empty"));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +67,13 @@ public class NavActivity extends AppCompatActivity implements NavigationView.OnN
     }
 
     public void getProfileData(User u) {
-        /*TextView login = findViewById(R.id.Login);
+        TextView login = findViewById(R.id.Login);
         TextView email = findViewById(R.id.Email);
+        TextView role = findViewById(R.id.Role);
 
         login.setText(u.getUsername());
-        email.setText(u.getEmail());*/
+        email.setText(u.getEmail());
+        role.setText(u.getAuthorities().stream().findFirst().orElse(new Authority()).getAuthority());
     }
 
     @Override

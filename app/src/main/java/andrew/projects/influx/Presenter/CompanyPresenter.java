@@ -8,7 +8,6 @@ import andrew.projects.influx.Domain.Company;
 import andrew.projects.influx.Service.CompanyService;
 import andrew.projects.influx.view.CompanyView;
 import lombok.NoArgsConstructor;
-import lombok.val;
 import moxy.InjectViewState;
 import moxy.MvpPresenter;
 import retrofit2.Call;

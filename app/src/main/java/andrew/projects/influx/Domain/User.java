@@ -1,7 +1,6 @@
 package andrew.projects.influx.Domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
@@ -15,6 +14,10 @@ public class User extends BaseEntity {
     private String password;
     private String email;
     private String emailConfirmation;
+
+    private List<Authority> authorities ;
+    @JsonIgnore
+    private List<Company> companies ;
 
     public User(String login, String pass) {
         this.username=login;
