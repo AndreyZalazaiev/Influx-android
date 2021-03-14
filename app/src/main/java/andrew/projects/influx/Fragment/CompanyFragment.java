@@ -72,10 +72,10 @@ public class CompanyFragment extends MvpAppCompatFragment implements CompanyView
     }
 
     private void onCompanyClick(Company company) {
-       /* getActivity().getSupportFragmentManager()
+        getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container,new RoomFragment(rooms))
-                .commit();*/
+                .replace(R.id.container,new DetailsFragment(company))
+                .commit();
     }
 
 

@@ -9,8 +9,8 @@
         android:menuCategory="container">
         <item
             android:id="@+id/nav_company"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Company" />
+            android:icon="@drawable/ic_domain_24dp"
+            android:title="@string/company" />
     </group>
 
     <group
@@ -19,7 +19,7 @@
         <item
             android:id="@+id/nav_log_out"
             android:icon="@drawable/ic_exit_to_app_black_24dp"
-            android:title="Log out" />
+            android:title="@string/log_out" />
     </group>
 
 </menu>

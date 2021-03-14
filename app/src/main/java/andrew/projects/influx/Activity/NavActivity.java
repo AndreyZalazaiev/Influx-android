@@ -105,7 +105,7 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
                 break;
             }
             case R.id.nav_company: {
-                actionBar.setTitle("Company");
+                actionBar.setTitle(getString(R.string.company));
                 actionBar.setIcon(R.drawable.ic_domain_black_24dp);
                 getSupportFragmentManager().beginTransaction()
                         .replace(R.id.container, new CompanyFragment())
