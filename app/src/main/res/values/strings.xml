@@ -28,4 +28,6 @@
 
     <string name="amount_of_resources">Amount of resources: </string>
     <string name="no_recommendations">No recommendations available</string>
+    <string name="sales">Sales</string>
+    <string name="resource">Resource</string>
 </resources>

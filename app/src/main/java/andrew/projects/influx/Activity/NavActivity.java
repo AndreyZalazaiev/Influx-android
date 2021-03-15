@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -18,9 +19,10 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 
 import andrew.projects.influx.Domain.Authority;
-import andrew.projects.influx.Domain.Company;
 import andrew.projects.influx.Domain.User;
 import andrew.projects.influx.Fragment.CompanyFragment;
+import andrew.projects.influx.Fragment.ResourceFragment;
+import andrew.projects.influx.Fragment.SalesFragment;
 import andrew.projects.influx.Presenter.NavPresenter;
 import andrew.projects.influx.R;
 import andrew.projects.influx.view.NavView;
@@ -47,7 +49,7 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (savedInstanceState != null) {
-           user = (User) savedInstanceState.getSerializable("user");
+            user = (User) savedInstanceState.getSerializable("user");
         }
         setContentView(R.layout.activity_nav);
         settings = getSharedPreferences("MyPref", MODE_PRIVATE);
@@ -71,10 +73,10 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
     }
 
     public void getProfileData(User u) {
+        this.user = u;
         TextView login = findViewById(R.id.Login);
         TextView email = findViewById(R.id.Email);
         TextView role = findViewById(R.id.Role);
-        this.user=u;
 
         login.setText(user.getUsername());
         email.setText(user.getEmail());
@@ -112,9 +114,19 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
             case R.id.nav_company: {
                 actionBar.setTitle(getString(R.string.company));
                 actionBar.setIcon(R.drawable.ic_domain_black_24dp);
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.container, new CompanyFragment())
-                        .commit();
+                switchFragment(new CompanyFragment());
+                break;
+            }
+            case R.id.nav_resource: {
+                actionBar.setTitle(getString(R.string.resource));
+                actionBar.setIcon(R.drawable.ic_business_center_white_24dp);
+                switchFragment(new ResourceFragment());
+                break;
+            }
+            case R.id.nav_sales: {
+                actionBar.setTitle(getString(R.string.sales));
+                actionBar.setIcon(R.drawable.ic_schedule_white_24dp);
+                switchFragment(new SalesFragment());
                 break;
             }
 
@@ -122,15 +134,23 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
         return true;
     }
 
+    public void switchFragment(Fragment f) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.container, f)
+                .commit();
+    }
+
     public void switchActivity(Class activity) {
         Intent intent = new Intent(NavActivity.this, activity);
         startActivity(intent);
     }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putSerializable("user",user);
+        savedInstanceState.putSerializable("user", user);
         super.onSaveInstanceState(savedInstanceState);
     }
+
     @Override
     public void onBackPressed() {
 

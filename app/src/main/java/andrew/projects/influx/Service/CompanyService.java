@@ -6,18 +6,22 @@ import com.google.gson.GsonBuilder;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.inject.Singleton;
+
 import andrew.projects.influx.Domain.Company;
 import andrew.projects.influx.Domain.Recommendation;
 import andrew.projects.influx.Domain.Stats;
 import andrew.projects.influx.Repos.CompanyRepo;
 import andrew.projects.influx.Util.Constants;
+import dagger.Component;
+import dagger.Provides;
 import lombok.val;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
-
 public class CompanyService {
     Retrofit retrofit;
+
 
     public CompanyService() {
         retrofit = new Retrofit.Builder()

@@ -11,6 +11,14 @@
             android:id="@+id/nav_company"
             android:icon="@drawable/ic_domain_24dp"
             android:title="@string/company" />
+        <item
+            android:id="@+id/nav_resource"
+            android:icon="@drawable/ic_business_center_black_24dp"
+            android:title="@string/resource" />
+        <item
+            android:id="@+id/nav_sales"
+            android:icon="@drawable/ic_schedule_black_24dp"
+            android:title="@string/sales" />
     </group>
 
     <group
