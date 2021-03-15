@@ -66,6 +66,7 @@ public class RecommendationPresenter extends MvpPresenter<RecommendationView> {
         }
         barChart.getXAxis().setValueFormatter(new IndexAxisValueFormatter(xAxisLabel));
         barChart.getXAxis().setPosition(XAxis.XAxisPosition.BOTTOM);
+        barChart.getXAxis().setLabelCount(xAxisLabel.size()-1);
 
 
         BarDataSet dataSet = new BarDataSet(entries, "");

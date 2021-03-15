@@ -73,4 +73,6 @@ dependencies {
     implementation 'com.google.dagger:dagger-android:2.15'
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
 
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
 }

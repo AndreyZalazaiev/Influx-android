@@ -10,7 +10,6 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import andrew.projects.influx.Domain.Company;
@@ -38,7 +37,6 @@ public class RecommendationFragment extends MvpAppCompatFragment implements Reco
         this.company = company;
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,12 +60,15 @@ public class RecommendationFragment extends MvpAppCompatFragment implements Reco
 
     @Override
     public void getRecommendations(List<Recommendation> recommendations) {
-        recommendations.forEach(r-> recommendationsView.setText(String.format("%s%s", recommendationsView.getText(), r.getText())));
+        if (recommendations != null) {
+            recommendationsView.setText("");
+            recommendations.forEach(r -> recommendationsView.setText(String.format("%s%s", recommendationsView.getText(), r.getText())));
+        }
     }
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
-        savedInstanceState.putSerializable("company",company);
+        savedInstanceState.putSerializable("company", company);
         super.onSaveInstanceState(savedInstanceState);
     }
 }

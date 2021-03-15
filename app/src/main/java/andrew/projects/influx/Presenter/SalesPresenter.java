@@ -7,6 +7,7 @@ import java.util.List;
 import andrew.projects.influx.Domain.Sales;
 import andrew.projects.influx.Service.SalesService;
 import andrew.projects.influx.view.SalesView;
+import lombok.NoArgsConstructor;
 import moxy.InjectViewState;
 import moxy.MvpPresenter;
 import retrofit2.Call;
@@ -14,6 +15,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 @InjectViewState
+@NoArgsConstructor
 public class SalesPresenter extends MvpPresenter<SalesView> {
 
     private SalesService salesService;
