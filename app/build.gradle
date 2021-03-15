@@ -27,6 +27,7 @@ android {
 }
 repositories {
     maven { url 'https://jitpack.io' }
+    maven { url "https://oss.jfrog.org/libs-snapshot" }
 }
 
 dependencies {
@@ -74,5 +75,8 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
 
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
 
 }
