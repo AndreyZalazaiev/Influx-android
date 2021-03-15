@@ -1,5 +1,6 @@
 package andrew.projects.influx.Domain;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
@@ -13,7 +14,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Company extends BaseEntity {
+public class Company extends BaseEntity implements Serializable {
     private Integer idUser;
     private String name;
     private Set<Recommendation> recommendations;

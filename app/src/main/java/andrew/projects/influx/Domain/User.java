@@ -2,6 +2,7 @@ package andrew.projects.influx.Domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.io.Serializable;
 import java.util.List;
 
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @Data
 @RequiredArgsConstructor
-public class User extends BaseEntity {
+public class User extends BaseEntity implements Serializable {
     private String username;
     private String password;
     private String email;

@@ -25,6 +25,9 @@ android {
     }
 
 }
+repositories {
+    maven { url 'https://jitpack.io' }
+}
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -62,6 +65,8 @@ dependencies {
     implementation "com.github.moxy-community:moxy:2.2.1"
     annotationProcessor "com.github.moxy-community:moxy-compiler:2.2.1"
     implementation "com.github.moxy-community:moxy-app-compat:2.2.1"
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
 
 }

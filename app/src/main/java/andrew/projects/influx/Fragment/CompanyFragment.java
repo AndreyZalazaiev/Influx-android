@@ -38,11 +38,6 @@ public class CompanyFragment extends MvpAppCompatFragment implements CompanyView
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_company, container, false);
         companiesContainer = view.findViewById(R.id.companies);
@@ -74,7 +69,7 @@ public class CompanyFragment extends MvpAppCompatFragment implements CompanyView
     private void onCompanyClick(Company company) {
         getActivity().getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.container,new DetailsFragment(company))
+                .replace(R.id.container, new RecommendationFragment(company))
                 .commit();
     }
 

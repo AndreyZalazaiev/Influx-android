@@ -18,6 +18,7 @@ import androidx.navigation.ui.NavigationUI;
 import com.google.android.material.navigation.NavigationView;
 
 import andrew.projects.influx.Domain.Authority;
+import andrew.projects.influx.Domain.Company;
 import andrew.projects.influx.Domain.User;
 import andrew.projects.influx.Fragment.CompanyFragment;
 import andrew.projects.influx.Presenter.NavPresenter;
@@ -34,6 +35,7 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
     NavPresenter navPresenter;
     private AppBarConfiguration mAppBarConfiguration;
     private SharedPreferences settings;
+    private User user;
 
     @ProvidePresenter
     NavPresenter provideDetailsPresenter() {
@@ -44,6 +46,9 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+           user = (User) savedInstanceState.getSerializable("user");
+        }
         setContentView(R.layout.activity_nav);
         settings = getSharedPreferences("MyPref", MODE_PRIVATE);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -63,17 +68,17 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
 
         onNavigationItemSelected(navigationView.getMenu().findItem(R.id.nav_company));
 
-
     }
 
     public void getProfileData(User u) {
         TextView login = findViewById(R.id.Login);
         TextView email = findViewById(R.id.Email);
         TextView role = findViewById(R.id.Role);
+        this.user=u;
 
-        login.setText(u.getUsername());
-        email.setText(u.getEmail());
-        role.setText(u.getAuthorities().stream().findFirst().orElse(new Authority()).getAuthority());
+        login.setText(user.getUsername());
+        email.setText(user.getEmail());
+        role.setText(user.getAuthorities().stream().findFirst().orElse(new Authority()).getAuthority());
     }
 
     @Override
@@ -121,7 +126,11 @@ public class NavActivity extends MvpAppCompatActivity implements NavView, Naviga
         Intent intent = new Intent(NavActivity.this, activity);
         startActivity(intent);
     }
-
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putSerializable("user",user);
+        super.onSaveInstanceState(savedInstanceState);
+    }
     @Override
     public void onBackPressed() {
 
